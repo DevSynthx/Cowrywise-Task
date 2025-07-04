@@ -10,7 +10,6 @@ protocol CurrencyBottomSheetDelegate: AnyObject {
 
 class CurrencyBottomSheetViewController: UIViewController {
     
-    // MARK: - UI Properties (Programmatic - NO MORE @IBOutlet)
     private let containerView = UIView()
     private let titleLabel = UILabel()
     private let tableView = UITableView()
@@ -46,7 +45,6 @@ class CurrencyBottomSheetViewController: UIViewController {
     
     private var filteredCurrencies: [Currency] = []
     
-    // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
       
@@ -299,7 +297,7 @@ extension CurrencyBottomSheetViewController: UITableViewDataSource, UITableViewD
         let selectedCurrency = filteredCurrencies[indexPath.row]
         delegate?.didSelectCurrency(selectedCurrency, isFromCurrency: isFromCurrency)
         
-        // Add haptic feedback
+        // haptic feedback
         let impactFeedback = UIImpactFeedbackGenerator(style: .light)
         impactFeedback.impactOccurred()
         

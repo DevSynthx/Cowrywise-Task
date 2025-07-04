@@ -60,13 +60,13 @@ class CurrencyUIManager {
         // From Button styling
         vc.FromButton.layer.borderWidth = 1.0
         vc.FromButton.layer.borderColor = UIColor.systemGray4.cgColor
-        vc.FromButton.layer.cornerRadius = 8
+        vc.FromButton.layer.cornerRadius = 5
         vc.FromButton.backgroundColor = UIColor.systemGray6
         
         // To Button styling
         vc.ToButton.layer.borderWidth = 1.0
         vc.ToButton.layer.borderColor = UIColor.lightGray.cgColor
-        vc.ToButton.layer.cornerRadius = 8
+        vc.ToButton.layer.cornerRadius = 5
         vc.ToButton.backgroundColor = UIColor.white
     }
     
@@ -74,7 +74,7 @@ class CurrencyUIManager {
         button.setTitle("Convert", for: .normal)
         button.setTitleColor(UIColor.white, for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
-        button.layer.cornerRadius = 8
+        button.layer.cornerRadius = 5
         
         // Initial state - disabled
         button.isEnabled = false
@@ -164,8 +164,3 @@ class CurrencyUIManager {
 
 
 
-extension ViewController {
-    @objc func dismissKeyboard() {
-        view.endEditing(true)
-    }
-}

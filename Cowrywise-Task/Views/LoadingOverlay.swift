@@ -140,8 +140,7 @@ class LoadingOverlay: UIView {
                 
                 // Re-enable parent view interaction
                 self.parentView?.isUserInteractionEnabled = true
-                
-                // Call completion handler
+          
                 completion?()
             }
         }

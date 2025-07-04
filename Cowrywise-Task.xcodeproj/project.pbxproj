@@ -6,6 +6,21 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		0414817A2E14BB17000FB91E /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = 041481792E14BB17000FB91E /* SwiftyJSON */; };
+		0414817D2E14BB9D000FB91E /* PromiseKit in Frameworks */ = {isa = PBXBuildFile; productRef = 0414817C2E14BB9D000FB91E /* PromiseKit */; };
+		04212DF82E1572EF00BA7B18 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 04212DF72E1572EF00BA7B18 /* RealmSwift */; };
+		0452F1202E16BA74006F8118 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 0452F11F2E16BA74006F8118 /* Alamofire */; };
+		0452F1222E16BA80006F8118 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 0452F1212E16BA80006F8118 /* Alamofire */; };
+		0452F1242E16BA89006F8118 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 0452F1232E16BA89006F8118 /* Alamofire */; };
+		0452F15D2E16CD79006F8118 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 0452F15C2E16CD79006F8118 /* RealmSwift */; };
+		0452F1602E16D19A006F8118 /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = 0452F15F2E16D19A006F8118 /* SwiftyJSON */; };
+		04FD758D2E16A4B8000D2603 /* PromiseKit in Frameworks */ = {isa = PBXBuildFile; productRef = 04FD758C2E16A4B8000D2603 /* PromiseKit */; };
+		04FD759A2E16A4F7000D2603 /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = 04FD75992E16A4F7000D2603 /* SwiftyJSON */; };
+		04FD759C2E16A4FA000D2603 /* PromiseKit in Frameworks */ = {isa = PBXBuildFile; productRef = 04FD759B2E16A4FA000D2603 /* PromiseKit */; };
+		04FD75A22E16A505000D2603 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 04FD75A12E16A505000D2603 /* RealmSwift */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		0471A0542E144DF600CC7577 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -23,6 +38,29 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		04FD75932E16A4C9000D2603 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		04FD75A02E16A4FF000D2603 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		0471A03D2E144DF400CC7577 /* Cowrywise-Task.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Cowrywise-Task.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0471A0532E144DF600CC7577 /* Cowrywise-TaskTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Cowrywise-TaskTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -30,6 +68,26 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		0452F1292E16BEC7006F8118 /* Exceptions for "Cowrywise-Task" folder in "Cowrywise-TaskTests" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Data/Error.swift,
+			);
+			target = 0471A0522E144DF600CC7577 /* Cowrywise-TaskTests */;
+		};
+		0452F1622E16D321006F8118 /* Exceptions for "Cowrywise-Task" folder in "Cowrywise-TaskUITests" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Data/CurrencyServiceAPI.swift,
+				Data/Error.swift,
+				Mock/MockCurrencyConversionDelegate.swift,
+				Model/CurrencyModel.swift,
+				Model/CurrencyRate.swift,
+				Model/FixerResponse.swift,
+				Views/CurrencyConversionManager.swift,
+			);
+			target = 0471A05C2E144DF600CC7577 /* Cowrywise-TaskUITests */;
+		};
 		0471A0652E144DF600CC7577 /* Exceptions for "Cowrywise-Task" folder in "Cowrywise-Task" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
@@ -44,6 +102,8 @@
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
 				0471A0652E144DF600CC7577 /* Exceptions for "Cowrywise-Task" folder in "Cowrywise-Task" target */,
+				0452F1292E16BEC7006F8118 /* Exceptions for "Cowrywise-Task" folder in "Cowrywise-TaskTests" target */,
+				0452F1622E16D321006F8118 /* Exceptions for "Cowrywise-Task" folder in "Cowrywise-TaskUITests" target */,
 			);
 			path = "Cowrywise-Task";
 			sourceTree = "<group>";
@@ -65,6 +125,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04212DF82E1572EF00BA7B18 /* RealmSwift in Frameworks */,
+				0452F1202E16BA74006F8118 /* Alamofire in Frameworks */,
+				0414817D2E14BB9D000FB91E /* PromiseKit in Frameworks */,
+				0414817A2E14BB17000FB91E /* SwiftyJSON in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -72,6 +136,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04FD75A22E16A505000D2603 /* RealmSwift in Frameworks */,
+				0452F1222E16BA80006F8118 /* Alamofire in Frameworks */,
+				04FD759A2E16A4F7000D2603 /* SwiftyJSON in Frameworks */,
+				04FD759C2E16A4FA000D2603 /* PromiseKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -79,6 +147,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0452F15D2E16CD79006F8118 /* RealmSwift in Frameworks */,
+				0452F1242E16BA89006F8118 /* Alamofire in Frameworks */,
+				0452F1602E16D19A006F8118 /* SwiftyJSON in Frameworks */,
+				04FD758D2E16A4B8000D2603 /* PromiseKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -91,6 +163,7 @@
 				0471A03F2E144DF400CC7577 /* Cowrywise-Task */,
 				0471A0562E144DF600CC7577 /* Cowrywise-TaskTests */,
 				0471A0602E144DF600CC7577 /* Cowrywise-TaskUITests */,
+				04FD758B2E16A4B8000D2603 /* Frameworks */,
 				0471A03E2E144DF400CC7577 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -103,6 +176,13 @@
 				0471A05D2E144DF600CC7577 /* Cowrywise-TaskUITests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		04FD758B2E16A4B8000D2603 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -125,6 +205,10 @@
 			);
 			name = "Cowrywise-Task";
 			packageProductDependencies = (
+				041481792E14BB17000FB91E /* SwiftyJSON */,
+				0414817C2E14BB9D000FB91E /* PromiseKit */,
+				04212DF72E1572EF00BA7B18 /* RealmSwift */,
+				0452F11F2E16BA74006F8118 /* Alamofire */,
 			);
 			productName = "Cowrywise-Task";
 			productReference = 0471A03D2E144DF400CC7577 /* Cowrywise-Task.app */;
@@ -137,6 +221,7 @@
 				0471A04F2E144DF600CC7577 /* Sources */,
 				0471A0502E144DF600CC7577 /* Frameworks */,
 				0471A0512E144DF600CC7577 /* Resources */,
+				04FD75A02E16A4FF000D2603 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -148,6 +233,10 @@
 			);
 			name = "Cowrywise-TaskTests";
 			packageProductDependencies = (
+				04FD75992E16A4F7000D2603 /* SwiftyJSON */,
+				04FD759B2E16A4FA000D2603 /* PromiseKit */,
+				04FD75A12E16A505000D2603 /* RealmSwift */,
+				0452F1212E16BA80006F8118 /* Alamofire */,
 			);
 			productName = "Cowrywise-TaskTests";
 			productReference = 0471A0532E144DF600CC7577 /* Cowrywise-TaskTests.xctest */;
@@ -160,6 +249,7 @@
 				0471A0592E144DF600CC7577 /* Sources */,
 				0471A05A2E144DF600CC7577 /* Frameworks */,
 				0471A05B2E144DF600CC7577 /* Resources */,
+				04FD75932E16A4C9000D2603 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -171,6 +261,10 @@
 			);
 			name = "Cowrywise-TaskUITests";
 			packageProductDependencies = (
+				04FD758C2E16A4B8000D2603 /* PromiseKit */,
+				0452F1232E16BA89006F8118 /* Alamofire */,
+				0452F15C2E16CD79006F8118 /* RealmSwift */,
+				0452F15F2E16D19A006F8118 /* SwiftyJSON */,
 			);
 			productName = "Cowrywise-TaskUITests";
 			productReference = 0471A05D2E144DF600CC7577 /* Cowrywise-TaskUITests.xctest */;
@@ -208,6 +302,12 @@
 			);
 			mainGroup = 0471A0342E144DF400CC7577;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				041481782E14BB17000FB91E /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
+				0414817B2E14BB9D000FB91E /* XCRemoteSwiftPackageReference "PromiseKit" */,
+				04212DF62E1572EF00BA7B18 /* XCRemoteSwiftPackageReference "realm-swift" */,
+				0452F11E2E16BA74006F8118 /* XCRemoteSwiftPackageReference "Alamofire" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 0471A03E2E144DF400CC7577 /* Products */;
 			projectDirPath = "";
@@ -297,6 +397,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -304,9 +405,13 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "task.Cowrywise-Task";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -325,6 +430,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -332,9 +438,13 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "task.Cowrywise-Task";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -465,13 +575,17 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = ABK2TMF98V;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "task.Cowrywise-TaskTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Cowrywise-Task.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Cowrywise-Task";
 			};
 			name = Debug;
@@ -484,13 +598,17 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = ABK2TMF98V;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "task.Cowrywise-TaskTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Cowrywise-Task.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Cowrywise-Task";
 			};
 			name = Release;
@@ -502,12 +620,17 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = ABK2TMF98V;
 				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "task.Cowrywise-TaskUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				TEST_TARGET_NAME = "Cowrywise-Task";
 			};
 			name = Debug;
@@ -519,12 +642,17 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = ABK2TMF98V;
 				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "task.Cowrywise-TaskUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				TEST_TARGET_NAME = "Cowrywise-Task";
 			};
 			name = Release;
@@ -569,6 +697,104 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		041481782E14BB17000FB91E /* XCRemoteSwiftPackageReference "SwiftyJSON" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SwiftyJSON/SwiftyJSON.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.2;
+			};
+		};
+		0414817B2E14BB9D000FB91E /* XCRemoteSwiftPackageReference "PromiseKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/mxcl/PromiseKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 8.2.0;
+			};
+		};
+		04212DF62E1572EF00BA7B18 /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-swift.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		0452F11E2E16BA74006F8118 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.10.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		041481792E14BB17000FB91E /* SwiftyJSON */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 041481782E14BB17000FB91E /* XCRemoteSwiftPackageReference "SwiftyJSON" */;
+			productName = SwiftyJSON;
+		};
+		0414817C2E14BB9D000FB91E /* PromiseKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0414817B2E14BB9D000FB91E /* XCRemoteSwiftPackageReference "PromiseKit" */;
+			productName = PromiseKit;
+		};
+		04212DF72E1572EF00BA7B18 /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 04212DF62E1572EF00BA7B18 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
+		};
+		0452F11F2E16BA74006F8118 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0452F11E2E16BA74006F8118 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		0452F1212E16BA80006F8118 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0452F11E2E16BA74006F8118 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		0452F1232E16BA89006F8118 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0452F11E2E16BA74006F8118 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		0452F15C2E16CD79006F8118 /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 04212DF62E1572EF00BA7B18 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
+		};
+		0452F15F2E16D19A006F8118 /* SwiftyJSON */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 041481782E14BB17000FB91E /* XCRemoteSwiftPackageReference "SwiftyJSON" */;
+			productName = SwiftyJSON;
+		};
+		04FD758C2E16A4B8000D2603 /* PromiseKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0414817B2E14BB9D000FB91E /* XCRemoteSwiftPackageReference "PromiseKit" */;
+			productName = PromiseKit;
+		};
+		04FD75992E16A4F7000D2603 /* SwiftyJSON */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 041481782E14BB17000FB91E /* XCRemoteSwiftPackageReference "SwiftyJSON" */;
+			productName = SwiftyJSON;
+		};
+		04FD759B2E16A4FA000D2603 /* PromiseKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0414817B2E14BB9D000FB91E /* XCRemoteSwiftPackageReference "PromiseKit" */;
+			productName = PromiseKit;
+		};
+		04FD75A12E16A505000D2603 /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 04212DF62E1572EF00BA7B18 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 0471A0352E144DF400CC7577 /* Project object */;
 }

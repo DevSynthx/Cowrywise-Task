@@ -2,8 +2,6 @@
 //  MockCurrencyConversionDelegate.swift
 //  Cowrywise-Task
 //
-//  Created by Inyene on 7/3/25.
-//
 
 
 class MockCurrencyConversionDelegate: CurrencyConversionDelegate {
