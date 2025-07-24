@@ -104,6 +104,19 @@ class ViewController: UIViewController {
     }
     
     private func performConversion() {
+        
+        guard let amountText = amountTextField.text else {
+            return
+        }
+        
+        
+      
+        
+        if (amountText.isEmpty) {
+            conversionManager.showError(APIError.apiError("Amount cannot be empty"))
+            return
+        }
+        
         guard let toCurrency = toCurrency else {
             conversionManager.showError(APIError.apiError("Please select a target currency"))
             return
@@ -227,13 +240,18 @@ extension ViewController: CurrencyBottomSheetDelegate {
 
 // MARK: - CurrencyConversionDelegate
 extension ViewController: CurrencyConversionDelegate {
-    func conversionDidSucceed(rate: Double) {
+  
+    
+    func conversionDidSucceed(response: FixerResponse) {
         hideLoading()
         
-        currentExchangeRate = rate
-        uiManager.updateExchangeRateLabel(rate: rate, fromCurrency: fromCurrency, toCurrency: toCurrency)
+      
+        currentExchangeRate = response.rates ?? 0.0
         
-        conversionManager.performRealTimeConversion(amount: getAmountFromTextField(), rate: rate)
+        
+        uiManager.updateExchangeRateLabel(response: response, fromCurrency: fromCurrency, toCurrency: toCurrency)
+        
+        conversionManager.performRealTimeConversion(amount: getAmountFromTextField(), rate:  response.rates ?? 0.0)
         
         uiManager.setConvertButtonLoading(false)
         uiManager.updateConvertButtonState(isReady: isReadyToConvert())

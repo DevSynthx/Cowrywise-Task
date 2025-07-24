@@ -6,7 +6,7 @@ import UIKit
 import PromiseKit
 
 protocol CurrencyConversionDelegate: AnyObject {
-    func conversionDidSucceed(rate: Double)
+    func conversionDidSucceed(response: FixerResponse)
     func conversionDidFail(error: Error)
     func updateConvertedAmount(_ formattedAmount: String)
 }
@@ -23,11 +23,11 @@ class CurrencyConversionManager {
         print("🔄 Starting currency conversion from \(from) to \(to)")
         
         CurrencyAPIService.shared.getExchangeRate(from: from, to: to)
-            .done { [weak self] rate in
-                print("✅ Exchange rate fetched successfully: 1 \(from) = \(rate) \(to)")
+            .done { [weak self] response in
+            
                 
                 DispatchQueue.main.async {
-                    self?.delegate?.conversionDidSucceed(rate: rate)
+                    self?.delegate?.conversionDidSucceed(response: response)
                 }
             }
             .catch { [weak self] error in
@@ -46,7 +46,7 @@ class CurrencyConversionManager {
             return
         }
         
-        let convertedAmount = amount * rate
+        let convertedAmount = amount * (rate)
         let formattedAmount = formatCurrency(convertedAmount)
         delegate?.updateConvertedAmount(formattedAmount)
         
@@ -59,7 +59,7 @@ class CurrencyConversionManager {
             return
         }
         
-        // Remove commas before converting to Double
+  
         let cleanText = text.replacingOccurrences(of: ",", with: "").trimmingCharacters(in: .whitespacesAndNewlines)
         
         guard !cleanText.isEmpty,

@@ -134,22 +134,37 @@ class CurrencyUIManager {
         }
     }
     
-    func updateExchangeRateLabel(rate: Double, fromCurrency: Currency, toCurrency: Currency?) {
+    func updateExchangeRateLabel(response: FixerResponse, fromCurrency: Currency, toCurrency: Currency?) {
         guard let vc = viewController,
               let toCurrency = toCurrency else { return }
         
         let formatter = DateFormatter()
-        formatter.dateFormat = "HH:mm"
-        let timeString = formatter.string(from: Date())
+        formatter.dateStyle = .none
+        formatter.timeStyle = .short
+        let apiTime = Date(timeIntervalSince1970: TimeInterval(response.timestamp ?? 0))
+        let currentTime = Date()
         
-        let rateText = String(format: "1 %@ = %.4f %@ • %@ UTC",
-                             fromCurrency.code,
-                             rate,
-                             toCurrency.code,
-                             timeString)
+        let readableDate = formatter.string(from: apiTime)
+
+        print("API timestamp time: \(formatter.string(from: apiTime))")
+        print("Current time: \(formatter.string(from: currentTime))")
+        
+     
+        print("Current timezone: \(formatter.timeZone?.identifier ?? "Unknown")")
+        
+        let exchangeRate = response.rates ?? 0.0
+        
+        let numformatter = NumberFormatter()
+        numformatter.numberStyle = .decimal
+        numformatter.minimumFractionDigits = 2
+        numformatter.maximumFractionDigits = 2
+
+        let rateText = "1 \(fromCurrency.code) = \(numformatter.string(from: NSNumber(value: exchangeRate)) ?? String(format: "%.2f", exchangeRate)) \(toCurrency.code) • \(readableDate)"
         
         vc.exchangeRateLabel.text = rateText
     }
+    
+ 
     
     func showFixedCurrencyAlert() {
         guard let vc = viewController else { return }

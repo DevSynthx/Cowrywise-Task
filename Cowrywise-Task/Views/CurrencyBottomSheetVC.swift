@@ -52,7 +52,7 @@ class CurrencyBottomSheetViewController: UIViewController {
         setupConstraints()
         setupTableView()
         setupGestures()
-        filteredCurrencies = currencies
+        filteredCurrencies = currencies.sorted(by: {$0.code < $1.code})
     }
     
     override func viewWillAppear(_ animated: Bool) {

@@ -12,7 +12,7 @@ class CurrencyRate: Object {
     @Persisted var rate: Double = 0.0
     @Persisted var timestamp: Date = Date()
     
-    override static func primaryKey() -> String? {
-        return "fromCurrency"
+    override static func indexedProperties() -> [String] {
+        return ["fromCurrency", "toCurrency"]
     }
 }

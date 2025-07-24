@@ -13,9 +13,9 @@ class MockCurrencyConversionDelegate: CurrencyConversionDelegate {
     var lastError: Error?
     var lastFormattedAmount: String?
     
-    func conversionDidSucceed(rate: Double) {
+    func conversionDidSucceed(response: FixerResponse) {
         conversionDidSucceedCalled = true
-        lastRate = rate
+        lastRate = response.rates ?? 0.0
     }
     
     func conversionDidFail(error: Error) {
