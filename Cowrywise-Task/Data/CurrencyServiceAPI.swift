@@ -16,7 +16,7 @@ class CurrencyAPIService {
     
     private init() {}
     
-    func getExchangeRate(from: String, to: String) -> Promise<Double> {
+    func getExchangeRate(from: String, to: String) -> Promise<FixerResponse> {
         return Promise { seal in
             // First try to get rate from cache
             if let cachedRate = getCachedRate(from: from, to: to) {
@@ -36,9 +36,8 @@ class CurrencyAPIService {
         }
     }
     
-    
     // Method to calculate cross rate using EUR as base
-    private func calculateCrossRate(from: String, to: String) -> Promise<Double> {
+    private func calculateCrossRate(from: String, to: String) -> Promise<FixerResponse> {
         return Promise { seal in
             let url = "\(baseURL)/latest"
             let parameters: [String: Any] = [
@@ -48,28 +47,32 @@ class CurrencyAPIService {
             ]
             
             print("Calculating cross rate using EUR base for \(from) to \(to)")
+            print("Request URL: \(url)")
+            print("Parameters: \(parameters)")
             
             AF.request(url, parameters: parameters)
                 .validate()
                 .responseDecodable(of: FixerResponse.self) { response in
+                    
+                    if let data = response.data {
+                        print("Raw Response Data: \(String(data: data, encoding: .utf8) ?? "Unable to convert data")")
+                    }
+                    
                     switch response.result {
                     case .success(let fixerResponse):
-                        if fixerResponse.success {
-                            let fromRate = fixerResponse.rates[from] ?? 0.0
-                            let toRate = fixerResponse.rates[to] ?? 0.0
-                            
-                            if fromRate > 0 && toRate > 0 {
+                        print("Decoded Response: \(fixerResponse)")
                         
-                                let crossRate = toRate / fromRate
-                                
-                                print("EUR rates - \(from): \(fromRate), \(to): \(toRate)")
-                                print("Cross rate calculated: 1 \(from) = \(crossRate) \(to)")
-                                
-                                seal.fulfill(crossRate)
+                        if fixerResponse.success {
+                            let rate = fixerResponse.rates ?? 0.0
+                                    
+                            if rate > 0 {
+                                print("Rate: \(rate)")
+                                seal.fulfill(fixerResponse)
                             } else {
-                                print("Invalid rates returned - \(from): \(fromRate), \(to): \(toRate)")
+                                print("Invalid rate returned: \(rate)")
                                 seal.reject(APIError.invalidResponse)
                             }
+                            
                         } else {
                             let errorInfo = fixerResponse.error?.info ?? "Unknown error"
                             let errorCode = fixerResponse.error?.code ?? 0
@@ -78,6 +81,7 @@ class CurrencyAPIService {
                         }
                         
                     case .failure(let error):
+                        print("Decoding error: \(error)")
                         print("Network error: \(error)")
                         seal.reject(APIError.networkError(error.localizedDescription))
                     }
@@ -85,38 +89,51 @@ class CurrencyAPIService {
         }
     }
     
-
-    private func getCachedRate(from: String, to: String) -> Double? {
-        let key = "\(from)_\(to)"
-        if let cachedRate = realm.object(ofType: CurrencyRate.self, forPrimaryKey: key) {
+    private func getCachedRate(from: String, to: String) -> FixerResponse? {
+      
+        if let cachedRate = realm.objects(CurrencyRate.self)
+            .filter("fromCurrency == %@ AND toCurrency == %@", from, to).first {
+            
             // Check if cache is still valid (less than 1 hour old)
             if Date().timeIntervalSince(cachedRate.timestamp) < 3600 {
-                print("Using cached rate for \(key): \(cachedRate.rate)")
-                return cachedRate.rate
+                print("Using cached rate for \(from)_\(to): \(cachedRate.rate)")
+                
+                return FixerResponse(
+                    success: true,
+                    timestamp: Int(cachedRate.timestamp.timeIntervalSince1970),
+                    base: cachedRate.fromCurrency,
+                    rate: cachedRate.rate,
+                    error: nil
+                )
             } else {
-                // Remove expired cache
+              
                 try! realm.write {
                     realm.delete(cachedRate)
                 }
-                print("Expired cache removed for \(key)")
+                print("Expired cache removed for \(from)_\(to)")
             }
         }
         return nil
     }
     
-    private func cacheRate(from: String, to: String, rate: Double) {
-        let key = "\(from)_\(to)"
+    private func cacheRate(from: String, to: String, rate: FixerResponse) {
         let currencyRate = CurrencyRate()
-        currencyRate.fromCurrency = key
+         
+        currencyRate.fromCurrency = from
         currencyRate.toCurrency = to
-        currencyRate.rate = rate
-        currencyRate.timestamp = Date()
+        currencyRate.rate = rate.rates ?? 0.0
+        currencyRate.timestamp = Date(timeIntervalSince1970: TimeInterval(rate.timestamp ?? 0))
         
         do {
             try realm.write {
-                realm.add(currencyRate, update: .modified)
+                // Delete existing record first to avoid duplicates
+                if let existing = realm.objects(CurrencyRate.self)
+                    .filter("fromCurrency == %@ AND toCurrency == %@", from, to).first {
+                    realm.delete(existing)
+                }
+                realm.add(currencyRate)
             }
-            print("Rate cached successfully: \(key) = \(rate)")
+            print("Rate cached successfully: \(from)_\(to) = \(rate.rates ?? 0.0)")
         } catch {
             print("Failed to cache rate: \(error)")
         }
@@ -142,8 +159,8 @@ class CurrencyAPIService {
     
     // Method to get cached rate for testing
     func getCachedRateForTesting(from: String, to: String) -> Double? {
-        let key = "\(from)_\(to)"
-        if let cachedRate = realm.object(ofType: CurrencyRate.self, forPrimaryKey: key) {
+        if let cachedRate = realm.objects(CurrencyRate.self)
+            .filter("fromCurrency == %@ AND toCurrency == %@", from, to).first {
             // Check if cache is still valid (less than 1 hour old)
             if Date().timeIntervalSince(cachedRate.timestamp) < 3600 {
                 return cachedRate.rate
